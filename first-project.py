@@ -17,18 +17,27 @@ print("Shape of the dataset:", df.shape)
 df.index = df.index.str.split('-').str[1]
 print("The first 5 rows of the dataset:", df.head())
 
-
-print(df[df.columns[0]].sum())
+# Creating a horizontal bar chart that shows the % of total enterprices by activity
 df["Enterprise_Precentage"] = ((df[df.columns[0]]/df[df.columns[0]].sum()) * 100).round(2)
-
-df_test = df["Enterprise_Precentage"].sort_values()
+df_ent_perc = df["Enterprise_Precentage"].sort_values()
 # plt.pie(df, labels=df.index, autopct='%1.1f%%')
-plt.barh(df_test.index, df_test)
+plt.barh(df_ent_perc.index, df_ent_perc)
 plt.yticks(fontsize=8)
 plt.xlabel("%")
-plt.title("Enterprises in Hungary by activity by 2022", fontweight='bold')
+plt.title("Enterprises by activity in Hungary (2022)", fontweight='bold')
 plt.tight_layout()
 plt.show()
 
+# Creating a horizontal bar chart that show the % of total wages and salaries by enterprise activity
+print(df.columns)
+df["Wages_Precentage"] = df["Wages and salaries (WAGE) (thousand HUF)"]/df['Number of employees in full-time equivalent units (SAL_FTE) (capita)']
+df["Wages_Precentage"] = ((df["Wages_Precentage"]/df["Wages_Precentage"].sum()) * 100).round(2)
+df_wage_perc = df["Wages_Precentage"].sort_values()
+plt.barh(df_wage_perc.index, df_wage_perc)
+plt.yticks(fontsize=8)
+plt.xlabel("%")
+plt.title("Average wages by enterprise activity in Hungary (2022)", fontweight='bold')
+plt.tight_layout()
+plt.show()
 
 
