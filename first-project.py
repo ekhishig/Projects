@@ -33,7 +33,7 @@ plt.title("Enterprises by activity in Hungary (2022)", fontweight='bold')
 plt.tight_layout()
 plt.show()
 
-# Creating a horizontal bar chart that show the % of total wages and salaries by enterprise activity
+# Creating a horizontal bar chart that shows the % of total wages and salaries by enterprise activity
 print(df.columns)
 df['Wage_per_capita'] = df['Wages and salaries (WAGE) (thousand HUF)'] / df['Number of employees in full-time equivalent units (SAL_FTE) (capita)']
 df['Wages_Precentage'] = ((df['Wage_per_capita']/df['Wage_per_capita'].sum()) * 100).round(2)
@@ -46,7 +46,7 @@ plt.title("Average wages by enterprise activity in Hungary (2022)", fontweight='
 plt.tight_layout()
 plt.show()
 
-# Creating a horizontal bar chart that show the monthly average wages and salaries by enterprise activity
+# Creating a horizontal bar chart that shows the monthly gross average wages and salaries by enterprise activity
 print(df.columns)
 df['Wage_per_capita'] = ((df['Wages and salaries (WAGE) (thousand HUF)'] / df['Number of employees in full-time equivalent units (SAL_FTE) (capita)']) / 12).round(2)
 df_wage_per_capita = df['Wage_per_capita'] .sort_values()
@@ -64,4 +64,11 @@ fig.text(0.95, 0.01, 'Source: Hungarian Central Statistical Office (KSH)',
 plt.tight_layout()
 plt.show()
 
+# Creating a horizontal bar chart that shows the average monthly working hours by enterprise activity
+df['Hours_per_employee_month'] = ((df['Hours worked by employees (HOWK) (hours)'] / df['Number of employees in full-time equivalent units (SAL_FTE) (capita)']) / 12).round(2)
+df_hours_per_employee = df['Hours_per_employee_month'].sort_values()
+plt.barh(df_hours_per_employee.index, df_hours_per_employee)
+plt.xlabel("Hours")
+plt.title("Average monthly working hours by Enterprise activity in Hungary (2022)")
+plt.show()
 
