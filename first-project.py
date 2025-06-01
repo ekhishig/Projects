@@ -56,9 +56,11 @@ country_avg_wages = ((df['Wages and salaries (WAGE) (thousand HUF)'].sum() / df[
 print(country_avg_wages)
 ax.axvline(country_avg_wages,  color='red', linestyle='--', label='Country average')
 plt.yticks(fontsize=8)
-plt.xlabel("thousand HUF")
+plt.xlabel("Thousand HUF")
 plt.title("Average gross monthly wages by Enterprise activity in Hungary (2022)", fontweight='bold')
 ax.legend()
+fig.text(0.95, 0.01, 'Source: Hungarian Central Statistical Office (KSH)', 
+         ha='right', va='bottom', fontsize=10, color='gray')
 plt.tight_layout()
 plt.show()
 
