@@ -3,7 +3,7 @@ import os
 import sqlite3
 import matplotlib.pyplot as plt
 
-df_path = os.path.join("Livestock in Mongolia", "Number of Livestocks.xlsx")
+df_path = os.path.join("NSO", "Number of Livestocks.xlsx")
 df = pd.read_excel(df_path, header=0)
 
 print(df.head())
@@ -46,7 +46,7 @@ pivot_df = pivot_df / 1e3
 # Plot each livestock as a line
 ax = pivot_df.plot(kind='line')
 
-plt.title("Livestock Amount Over Years in Mongolia", fontweight='bold')
+plt.title("Livestock Amount Over Years in Mongolia")
 plt.xlabel("Year")
 plt.ylabel("Amount (Millions)")
 plt.legend(title="Livestock Type")

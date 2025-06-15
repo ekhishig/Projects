@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 # import csv
 
 # Importing data (Labour and Performance Indicators of Enterprises in Hungary in 2022)
-df_path = os.path.join("Labour_and_performance_indicators_of_enterprises.csv")
+df_path = os.path.join("Labour Market in Hungary", "Labour_and_performance_indicators_of_enterprises.csv")
 df = pd.read_csv(df_path, delimiter=';', encoding='utf-8', index_col=0)
 
 # Importing csv using csv library will return rows as lists
@@ -67,6 +67,6 @@ df['Hours_per_employee_month'] = ((df['Hours worked by employees (HOWK) (hours)'
 df_hours_per_employee = df['Hours_per_employee_month'].sort_values()
 plt.barh(df_hours_per_employee.index, df_hours_per_employee)
 plt.xlabel("Hours")
-plt.title("Average monthly working hours by Enterprise activity in Hungary (2022)")
+plt.title("Average monthly working hours by Enterprise activity in Hungary (2022)", fontweight='bold')
 plt.show()
 
