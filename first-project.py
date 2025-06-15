@@ -25,7 +25,6 @@ print("The first 5 rows of the dataset:", df.head())
 # Creating a horizontal bar chart that shows the % of total enterprices by activity
 df['Enterprise_Precentage'] = ((df[df.columns[0]] / df[df.columns[0]].sum()) * 100).round(2)
 df_ent_perc = df['Enterprise_Precentage'].sort_values()
-# plt.pie(df, labels=df.index, autopct='%1.1f%%')
 plt.barh(df_ent_perc.index, df_ent_perc)
 plt.yticks(fontsize=8)
 plt.xlabel("%")
@@ -47,7 +46,6 @@ plt.tight_layout()
 plt.show()
 
 # Creating a horizontal bar chart that shows the monthly gross average wages and salaries by enterprise activity
-print(df.columns)
 df['Wage_per_capita'] = ((df['Wages and salaries (WAGE) (thousand HUF)'] / df['Number of employees in full-time equivalent units (SAL_FTE) (capita)']) / 12).round(2)
 df_wage_per_capita = df['Wage_per_capita'] .sort_values()
 fig, ax = plt.subplots()
